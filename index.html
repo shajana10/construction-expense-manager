@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contruction Expense Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Floating Background Shapes -->
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+
+    <!-- ================= LOGIN PAGE ================= -->
+    <div id="loginBox" class="login">
+
+        <div class="login-card">
+
+            <h2>🏗 Construction Expense Manager</h2>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter Email"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                required
+            >
+
+            <button onclick="login()">
+                Login
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MAIN APP ================= -->
+    <div id="app" class="container" style="display:none;">
+
+        <!-- Header -->
+        <div class="header">
+
+            <h1>🏗 Construction Expense Manager</h1>
+
+            <button onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard">
+
+            <div class="card">
+                <h3>Total Expense</h3>
+                <p id="totalAmount">₹0</p>
+            </div>
+
+            <div class="card">
+                <h3>Material Cost</h3>
+                <p id="materialTotal">₹0</p>
+            </div>
+
+            <div class="card">
+                <h3>Labour Cost</h3>
+                <p id="labourTotal">₹0</p>
+            </div>
+
+        </div>
+
+        <!-- Month Filter -->
+        <div class="filter-section">
+
+            <label for="monthFilter">
+                Filter by Month
+            </label>
+
+            <select
+                id="monthFilter"
+                onchange="loadExpenses()"
+            >
+                <option value="all">
+                    All Months
+                </option>
+            </select>
+
+        </div>
+
+        <!-- Expense Form -->
+        <form id="expense-form">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Expense Name"
+                required
+            >
+
+            <select id="category">
+
+                <option value="material">
+                    Material
+                </option>
+
+                <option value="labour">
+                    Labour
+                </option>
+
+            </select>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="Amount"
+                required
+            >
+
+            <input
+                type="date"
+                id="date"
+                required
+            >
+
+            <button
+                type="submit"
+                id="submit-btn"
+            >
+                Add Expense
+            </button>
+
+        </form>
+
+        <!-- Chart -->
+        <div id="chartContainer">
+
+            <canvas id="expenseChart"></canvas>
+
+        </div>
+
+        <!-- Expense Table -->
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="expense-list">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="supabaseClient.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
