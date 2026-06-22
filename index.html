@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contruction Expense Manager</title>
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Construction Expense Manager</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Google Icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Chart.js -->
@@ -12,15 +25,18 @@
 
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
+
 <body>
 
-    <!-- Floating Background Shapes -->
+    <!-- Floating Background -->
     <div class="floating-shape shape1"></div>
     <div class="floating-shape shape2"></div>
     <div class="floating-shape shape3"></div>
 
-    <!-- ================= LOGIN PAGE ================= -->
+    <!-- ================= LOGIN ================= -->
+
     <div id="loginBox" class="login">
 
         <div class="login-card">
@@ -31,15 +47,13 @@
                 type="email"
                 id="email"
                 placeholder="Enter Email"
-                required
-            >
+                required>
 
             <input
                 type="password"
                 id="password"
                 placeholder="Enter Password"
-                required
-            >
+                required>
 
             <button onclick="login()">
                 Login
@@ -49,10 +63,15 @@
 
     </div>
 
-    <!-- ================= MAIN APP ================= -->
-    <div id="app" class="container" style="display:none;">
+    <!-- ================= APP ================= -->
+
+    <div
+        id="app"
+        class="container"
+        style="display:none;">
 
         <!-- Header -->
+
         <div class="header">
 
             <h1>🏗 Construction Expense Manager</h1>
@@ -63,7 +82,8 @@
 
         </div>
 
-        <!-- Dashboard Cards -->
+        <!-- Dashboard -->
+
         <div class="dashboard">
 
             <div class="card">
@@ -83,7 +103,8 @@
 
         </div>
 
-        <!-- Month Filter -->
+        <!-- Filter -->
+
         <div class="filter-section">
 
             <label for="monthFilter">
@@ -92,24 +113,25 @@
 
             <select
                 id="monthFilter"
-                onchange="loadExpenses()"
-            >
+                onchange="loadExpenses()">
+
                 <option value="all">
                     All Months
                 </option>
+
             </select>
 
         </div>
 
         <!-- Expense Form -->
+
         <form id="expense-form">
 
             <input
                 type="text"
                 id="name"
                 placeholder="Expense Name"
-                required
-            >
+                required>
 
             <select id="category">
 
@@ -127,25 +149,25 @@
                 type="number"
                 id="amount"
                 placeholder="Amount"
-                required
-            >
+                required>
 
             <input
                 type="date"
                 id="date"
-                required
-            >
+                required>
 
             <button
                 type="submit"
-                id="submit-btn"
-            >
+                id="submit-btn">
+
                 Add Expense
+
             </button>
 
         </form>
 
         <!-- Chart -->
+
         <div id="chartContainer">
 
             <canvas id="expenseChart"></canvas>
@@ -153,16 +175,19 @@
         </div>
 
         <!-- Expense Table -->
+
         <table>
 
             <thead>
 
                 <tr>
+
                     <th>Name</th>
                     <th>Category</th>
                     <th>Amount</th>
                     <th>Date</th>
                     <th>Actions</th>
+
                 </tr>
 
             </thead>
@@ -176,8 +201,11 @@
     </div>
 
     <!-- Scripts -->
+
     <script src="supabaseClient.js"></script>
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
